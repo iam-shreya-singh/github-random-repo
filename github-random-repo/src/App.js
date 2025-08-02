@@ -4,6 +4,9 @@ import LanguageSelector from './components/LanguageSelector';
 import RepoCard from './components/RepoCard';
 import ErrorMessage from './components/ErrorMessage';
 import './App.css';
+import LoadingSkeleton from './components/LoadingSkeleton';
+import Footer from './components/Footer';
+
 
 function App() {
   const [languages, setLanguages] = useState([]);
@@ -89,6 +92,7 @@ useEffect(() => {
         
         <RepoCard repo={repo} />
       </main>
+            <Footer />
     </div>
   );
 }
