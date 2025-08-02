@@ -19,6 +19,9 @@ This project is a frontend implementation of the [GitHub Random Repo Explorer ch
 3. Start development server: `npm start`
 4. Open `http://localhost:3000` in your browser
 
+### Animation Demo
+![Animation Demo](/workspaces/github-random-repo/github-random-repo/public/working_state.gif)
+
 ## Features
 
 - **Random Repository Discovery**: Fetch random repositories from GitHub
