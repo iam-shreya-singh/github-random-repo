@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LanguageSelector = ({ languages, selectedLanguage, onSelect }) => {
+const LanguageSelector = ({ languages, selectedLanguage, onSelect, loading }) => {
   return (
     <div className="language-selector">
       <select 
@@ -8,8 +8,8 @@ const LanguageSelector = ({ languages, selectedLanguage, onSelect }) => {
         onChange={(e) => onSelect(e.target.value)}
         className="language-dropdown"
       >
-        <option value="">All Languages</option>
-        {languages.map(lang => (
+        <option value="">{loading ? 'Loading languages...' : 'All Languages'}</option>
+        {!loading && languages.map(lang => (
           <option key={lang.value} value={lang.value}>
             {lang.label}
           </option>

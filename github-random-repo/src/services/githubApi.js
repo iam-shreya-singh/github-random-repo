@@ -1,13 +1,51 @@
 const GITHUB_API = 'https://api.github.com';
-const LANGUAGES_URL = 'https://raw.githubusercontent.com/kamranahmedse/githunt/master/src/components/filters/language-filter/languages.json';
+const LANGUAGES_URL = 'https://raw.githubusercontent.com/github/linguist/master/lib/linguist/languages.yml';
 
 export const fetchLanguages = async () => {
   try {
+    console.log("Fetching languages from GitHub Linguist...");
     const response = await fetch(LANGUAGES_URL);
-    return await response.json();
+    
+    if (!response.ok) {
+      throw new Error('Failed to fetch languages');
+    }
+    
+    const yamlText = await response.text();
+    
+    // Parsing YAML to extract language names
+    const languages = [];
+    const lines = yamlText.split('\n');
+    
+    for (const line of lines) {
+      // Skip empty lines, comments, and indented lines (which are properties)
+      if (line && !line.startsWith(' ') && !line.startsWith('#') && line.includes(':')) {
+        const languageName = line.split(':')[0].trim();
+        if (languageName) {
+          languages.push({
+            value: languageName.toLowerCase(),
+            label: languageName
+          });
+        }
+      }
+    }
+    
+    console.log(`Loaded ${languages.length} languages`);
+    return languages;
   } catch (error) {
     console.error('Error fetching languages:', error);
-    return [];
+    // Fallback to common languages if the fetch fails
+    return [
+      { value: "javascript", label: "JavaScript" },
+      { value: "python", label: "Python" },
+      { value: "java", label: "Java" },
+      { value: "typescript", label: "TypeScript" },
+      { value: "csharp", label: "C#" },
+      { value: "cpp", label: "C++" },
+      { value: "php", label: "PHP" },
+      { value: "go", label: "Go" },
+      { value: "rust", label: "Rust" },
+      { value: "ruby", label: "Ruby" }
+    ];
   }
 };
 

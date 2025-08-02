@@ -11,26 +11,29 @@ function App() {
   const [repo, setRepo] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  // Add state
+const [languagesLoading, setLanguagesLoading] = useState(true);
 
-  // Load languages on component mount
-  useEffect(() => {
-    const loadLanguages = async () => {
-      try {
-        const langs = await fetchLanguages();
-        setLanguages(langs);
-      } catch (err) {
-        setError('Failed to load languages');
-      }
-    };
-    
-    loadLanguages();
-  }, []);
-
+// useEffect
+useEffect(() => {
+  const loadLanguages = async () => {
+    setLanguagesLoading(true);
+    try {
+      const langs = await fetchLanguages();
+      setLanguages(langs);
+    } catch (err) {
+      setError('Failed to load languages');
+    } finally {
+      setLanguagesLoading(false);
+    }
+  };
+  loadLanguages();
+}, []);
   // Fetch a random repository
   const handleFetchRepo = async () => {
     setLoading(true);
     setError('');
-    setRepo(null);
+    //setRepo(null);
     
     try {
       const randomRepo = await fetchRandomRepo(selectedLanguage);
@@ -42,13 +45,13 @@ function App() {
     }
   };
 
+
   return (
     <div className="App">
       <header className="app-header">
         <h1>GitHub Random Repo Explorer</h1>
         <p>Discover interesting repositories from GitHub</p>
       </header>
-
       <main className="main-content">
         <div className="controls">
           <LanguageSelector 
@@ -63,10 +66,20 @@ function App() {
           >
             {loading ? 'Loading...' : 'Get Random Repo'}
           </button>
+          {/* To Show refresh button only if a repo is fetched */}
+        {repo && (
+            <button 
+              onClick={handleFetchRepo} 
+              disabled={loading}
+              className="refresh-button"
+            >
+              {loading ? '↻' : '↻ Refresh'}
+            </button>
+          )}
         </div>
 
         <ErrorMessage message={error} />
-        
+        {/* Only show loading spinner if no repo exists yet */}
         {loading && (
           <div className="loading">
             <div className="spinner"></div>
