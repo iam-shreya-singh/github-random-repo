@@ -20,7 +20,7 @@ This project is a frontend implementation of the [GitHub Random Repo Explorer ch
 4. Open `http://localhost:3000` in your browser
 
 ### Animation Demo
-![Animation Demo](/workspaces/github-random-repo/github-random-repo/public/working_state.gif)
+![Animation Demo]([/workspaces/github-random-repo/github-random-repo/public/working_state.gif](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2YyN3gwZjBzMHY3ODRyeW52NW1wcXBmdnBneW5ramE1dDhkMTl3MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QZppKarljdI8mWg0Bs/giphy.gif))
 
 ## Features
 
