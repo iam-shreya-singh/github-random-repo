@@ -4,40 +4,99 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
+    <meta name="theme-color" content="#0366d6" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discover interesting repositories from GitHub with the GitHub Random Repo Explorer. Find new projects, explore different programming languages, and get inspired by the open-source community." />
+    <meta name="keywords" content="GitHub, repositories, open source, programming, developer tools, random repo, explore" />
+    <meta name="author" content="GitHub Random Repo Explorer" />
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="GitHub Random Repo Explorer" />
+    <meta property="og:description" content="Discover interesting repositories from GitHub. Find new projects, explore different programming languages, and get inspired by the open-source community." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="%PUBLIC_URL%" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GitHub Random Repo Explorer" />
+    <meta name="twitter:description" content="Discover interesting repositories from GitHub. Find new projects, explore different programming languages, and get inspired by the open-source community." />
+    <meta name="twitter:image" content="%PUBLIC_URL%/og-image.jpg" />
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    
+    <!-- Web App Manifest -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    
+    <!-- Preconnect to GitHub API for faster loading -->
+    <link rel="preconnect" href="https://api.github.com">
+    <link rel="preconnect" href="https://raw.githubusercontent.com">
+    
+    <!-- Google Fonts (optional) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons (optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <title>GitHub Random Repo Explorer</title>
+    
+    <!-- Inline critical CSS for faster initial render -->
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        background-color: #f6f8fa;
+        color: #24292e;
+        line-height: 1.6;
+      }
+      
+      .app-loading {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f6f8fa;
+      }
+      
+      .app-loading-spinner {
+        border: 4px solid rgba(3, 102, 214, 0.1);
+        border-radius: 50%;
+        border-top: 4px solid #0366d6;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <!-- Loading spinner shown while React loads -->
+    <div id="root">
+      <div class="app-loading">
+        <div class="app-loading-spinner"></div>
+        <p>Loading GitHub Random Repo Explorer...</p>
+      </div>
+    </div>
+    
+    <!-- Fallback message for users with JavaScript disabled -->
+    <noscript>
+      <div style="text-align: center; padding: 20px;">
+        <h1>GitHub Random Repo Explorer</h1>
+        <p>You need to enable JavaScript to run this app.</p>
+        <p>This application allows you to discover interesting repositories from GitHub.</p>
+      </div>
+    </noscript>
   </body>
 </html>
