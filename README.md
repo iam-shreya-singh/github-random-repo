@@ -1,4 +1,4 @@
-# GitHub Random Repo Explorer
+# RepoFinder | A GitHub Random Explorer 
 
 A JavaScript web application that discovers random GitHub repositories with filtering capabilities.
 
